@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        /* ========================================
+           CSS VARIABLES - Easy Theme Customization
+           ======================================== */
+        :root {
+            /* Slate Color Palette */
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            
+            /* Theme Colors */
+            --primary-color: var(--slate-600);
+            --secondary-color: var(--slate-700);
+            --accent-color: #3b82f6;
+            --bg-color: var(--slate-900);
+            --bg-secondary: var(--slate-800);
+            --text-color: var(--slate-100);
+            --text-secondary: var(--slate-300);
+            
+            /* Spacing */
+            --section-padding: 80px 20px;
+            --container-max-width: 1200px;
+            
+            /* Transitions */
+            --transition-speed: 0.3s;
+        }
+
+        /* ========================================
+           RESET & BASE STYLES
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition-speed);
+        }
+
+        /* ========================================
+           NAVIGATION BAR
+           ======================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            transition: var(--transition-speed);
+        }
+
+        /* ========================================
+           SECTION CONTAINER STYLES
+           ======================================== */
+        section {
+            padding: var(--section-padding);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 1rem auto;
+        }
+
+        /* ========================================
+           HOME SECTION
+           ======================================== */
+        #home {
+            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 100%);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--slate-100), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            border: 2px solid transparent;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* ========================================
+           EXPERIENCE SECTION
+           ======================================== */
+        #experience {
+            background-color: var(--bg-secondary);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--slate-600);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 52%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 52%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            border: 4px solid var(--bg-secondary);
+            top: 0;
+        }
+
+        .timeline-content {
+            background-color: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform var(--transition-speed);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .company {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+        }
+
+        /* ========================================
+           PROJECTS SECTION
+           ======================================== */
+        #projects {
+            background-color: var(--bg-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform var(--transition-speed);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--slate-700), var(--slate-600));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--slate-400);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: var(--slate-700);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========================================
+           CONTACT SECTION
+           ======================================== */
+        #contact {
+            background-color: var(--bg-secondary);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-method {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-method strong {
+            color: var(--text-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method a {
+            color: var(--accent-color);
+        }
+
+        .contact-form {
+            background-color: var(--bg-color);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--slate-600);
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            border-radius: 5px;
+            font-family: inherit;
+            transition: border-color var(--transition-speed);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background-color: var(--bg-color);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--slate-700);
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        @media (max-width: 768px) {
+            /* Navigation */
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                padding: 1rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            /* Hero Section */
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+
+            /* Timeline */
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 2rem;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 0;
+                transform: translateX(-50%);
+            }
+
+            /* Contact */
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            /* Section Title */
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         NAVIGATION BAR
+         - Sticky navigation with smooth scroll
+         - To add new sections: Add <li> with href to section ID
+         ======================================== -->
+    <nav>
+        <div class="container">
+            <div class="logo">Your Name</div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         HOME SECTION
+         - Hero introduction
+         - Edit the content below to personalize
+         ======================================== -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm Your Name</h1>
+                <p class="subtitle">Full Stack Developer | Problem Solver | Tech Enthusiast</p>
+                <p>I build elegant solutions to complex problems. Passionate about creating meaningful digital experiences that make a difference.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         EXPERIENCE SECTION
+         - Timeline layout for work experience
+         - To add new experience: Copy a timeline-item div
+         ======================================== -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <!-- Experience Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Software Engineer</h3>
+                        <div class="company">Tech Company Inc.</div>
+                        <div class="date">2022 - Present</div>
+                        <p>Led development of scalable web applications serving 1M+ users. Architected microservices infrastructure and mentored junior developers.</p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <div class="company">Innovation Labs</div>
+                        <div class="date">2020 - 2022</div>
+                        <p>Developed full-stack applications using React and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.</p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Junior Developer</h3>
+                        <div class="company">StartUp Co.</div>
+                        <div class="date">2018 - 2020</div>
+                        <p>Built responsive web interfaces and implemented RESTful APIs. Gained experience in agile development methodologies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PROJECTS SECTION
+         - Grid layout for project showcases
+         - To add new project: Copy a project-card div
+         ======================================== -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">🚀</div>
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>A full-featured online shopping platform with payment integration, inventory management, and real-time analytics.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#">View Demo</a>
+                            <a href="#">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">📱</div>
+                    <div class="project-content">
+                        <h3>Task Management App</h3>
+                        <p>Collaborative task management tool with real-time updates, drag-and-drop interface, and team collaboration features.</p>
+                        <div class="project-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Tailwind</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#">View Demo</a>
+                            <a href="#">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">🎨</div>
+                    <div class="project-content">
+                        <h3>Design System Library</h3>
+                        <p>Comprehensive component library with accessibility features, dark mode support, and extensive documentation.</p>
+                        <div class="project-tags">
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Storybook</span>
+                            <span class="tag">CSS-in-JS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#">View Demo</a>
+                            <a href="#">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CONTACT & RESUME SECTION
+         - Contact form and information
+         - Download resume link
+         ======================================== -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                    
+                    <div class="contact-method">
+                        <strong>Email</strong>
+                        <a href="mailto:your.email@example.com">your.email@example.com</a>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <strong>LinkedIn</strong>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <strong>GitHub</strong>
+                        <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <strong>Resume</strong>
+                        <a href="/path-to-your-resume.pdf" download class="btn btn-primary" style="display: inline-block; margin-top: 1rem;">Download Resume</a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+
+    <!-- ========================================
+         JAVASCRIPT
+         - Smooth scroll navigation
+         - Mobile menu toggle
+         - Form handling
+         - Active nav link highlighting
+         ======================================== -->
+    <script>
+        // ===== SMOOTH SCROLL NAVIGATION =====
+        // Handles clicking on navigation links for smooth scrolling
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                // Smooth scroll to section
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('navMenu').classList.remove('active');
+                
+                // Update active link
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // ===== MOBILE MENU TOGGLE =====
+        // Handles hamburger menu on mobile devices
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // ===== SCROLL SPY - ACTIVE NAVIGATION =====
+        // Highlights the current section in navigation as you scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ===== CONTACT FORM HANDLING =====
+        // Note: This is a basic example. For GitHub Pages, you'll need to:
+        // 1. Use a service like Formspree, Netlify Forms, or EmailJS
+        // 2. Or implement your own backend API
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+            
+            // For demonstration - replace with your actual form handling
+            alert('Thank you for your message! This is a demo. Please integrate with a form service like Formspree or EmailJS.');
+            
+            // Reset form
+            this.reset();
+            
+            // To integrate with a form service:
+            // 1. Formspree: Change form action to your Formspree endpoint
+            // 2. EmailJS: Use their SDK to send emails
+            // 3. Netlify Forms: Add 'data-netlify="true"' to form tag
+        });
+
+        // ===== ADD NEW SECTIONS =====
+        // To add a new section to your portfolio:
+        // 1. Create a new <section> with unique id (e.g., id="skills")
+        // 2. Add corresponding <li> in navigation with href="#skills"
+        // 3. The scroll spy will automatically track it
+        // 4. Style it using the existing CSS classes or add custom styles
+    </script>
+</body>
+</html>
